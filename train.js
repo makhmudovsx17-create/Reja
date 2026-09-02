@@ -1,3 +1,29 @@
+// MITASK-B
+function countDigits(str) {
+    let count = 0;
+    for (let char of str) {
+        if (!isNaN(char) && char !== ' ') count++;
+    }
+    return count;
+}
+
+console.log(countDigits("ad2a54y79wet0sfgb9"));
+
+// MITASK-A
+// function countLetter(letter, word) {
+//     let count = 0;
+
+//     for (let i = 0; i < word.length; i++) {
+//         if (word[i] === letter) {
+//             count++;
+//         };
+//     };
+
+//     return count;
+// };
+
+// console.log(countLetter("e", "unbelievable"));
+
 // console.log("Jack Ma maslahatlari");
 // const list = [
 //     "yahshi talabal boling", // 0-20
@@ -72,19 +98,3 @@
 //     console.log(javob);
 // }
 // run();
-
-
-// MITASK-A
-function countLetter(letter, word) {
-    let count = 0;
-
-    for (let i = 0; i < word.length; i++) {
-        if (word[i] === letter) {
-            count++;
-        };
-    };
-
-    return count;
-};
-
-console.log(countLetter("e", "unbelievable"));
