@@ -4,9 +4,6 @@ const res = require("express/lib/response");
 const app = express();
 const fs = require("fs");
 
-// MongoDB chaqirish
-const db = require("./server").db();
-
 let user;
 fs.readFile("database/user.json", "utf8", (err, data) => {
     if(err) {
@@ -15,6 +12,9 @@ fs.readFile("database/user.json", "utf8", (err, data) => {
         user = JSON.parse(data)
     }
 });
+
+const db = require("./server").db();
+
 // 1: Kiris code
 app.use(express.static("public"));
 app.use(express.json());
@@ -27,16 +27,17 @@ app.set("views", "views");
 app.set("view engine", "ejs");
 
 // 4: Routing code
-// app.get("/hello", function(req, res) {
-//     res.end("<h1>HELLO WORLD</h1>");
-// });
-// app.get("/gift", function(req, res) {
-//     res.end("<h1>Siz sovg'alar bo'limidasiz</h1>");
-// });
-
 app.post("/create-item", (req, res) => {
-    console.log(req.body);
-    res.json({ test: "success" })
+    console.log("user entered /create-item");
+    const new_reja = req.body.reja;
+    db.collection("plans").insertOne({reja: new_reja}, (err, data) => {
+        if(err) {
+            console.log(err);
+            res.end('something went wrong');
+        } else {
+            res.end('successfully added');
+        }
+    });
 });
 
 app.get('/author', (req, res) => {
@@ -44,7 +45,18 @@ app.get('/author', (req, res) => {
 });
 
 app.get('/', function (req, res) {
-    res.render("reja");
+    console.log('user entered /');
+    db.collection("plans")
+    .find()
+    .toArray((err, data) => {
+        if(err) {
+            console.log(err);
+            res.end("something went wrong");
+        } else {
+            console.log(data);
+            res.render("reja", { items: data});
+        }
+    });
 });
 
-module.export = app;
+module.exports = app;

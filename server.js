@@ -2,7 +2,7 @@ const http = require('http');
 const { MongoClient } = require("mongodb");
 
 let db;
-const connectionString = "mongodb+srv://makhmudovsax17:sarvarbekx17@cluster0.kwvwl9d.mongodb.net/Reja";
+const connectionString = "mongodb+srv://makhmudovsax17:6Bsy7S@i$_y5Mf9@cluster0.kwvwl9d.mongodb.net/Reja";
 
 MongoClient.connect(connectionString, 
     {
@@ -13,7 +13,7 @@ MongoClient.connect(connectionString,
     if(err) console.log("ERROR on connection MongoDB");
     else {
         console.log("MongoDB connection succeed");
-        module.experts = client;
+        module.exports = client;
 
         const app = require("./app");
         const server = http.createServer(app);
