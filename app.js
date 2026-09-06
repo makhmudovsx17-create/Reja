@@ -1,7 +1,7 @@
-console.log("Web Serverni Boshlash");
-const express = require("express");
-const res = require("express/lib/response");
-const app = express();
+console.log("Web Serverni Boshlash"); // ichidagi yozuvni browserga chiqaradi
+const express = require("express"); // Express frameworkni loyihaga ulab ishlatadi
+const res = require("express/lib/response"); // Expressning response prototipe objectini yuklaydi
+const app = express(); // dastur va server cofiglarini boshqaradigan EX nishasini yaratadi
 const fs = require("fs");
 
 let user;
@@ -11,32 +11,29 @@ fs.readFile("database/user.json", "utf8", (err, data) => {
     } else {
         user = JSON.parse(data)
     }
-});
+}); // database/user.json dagi malumotlarni o'qiydi
 
-const db = require("./server").db();
+const db = require("./server").db(); // ./server ichidagi malumotlarni keyin ishlatish uchun dbga saqlash
 
-// 1: Kiris code
+// 1: Kirish code
 app.use(express.static("public"));
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.json()); // json formatida kelayotgan fayllarni o'qish uchun js formatga o'tkazib beradi
+app.use(express.urlencoded({extended: true})); // app HTML fayllarni tushunishiga yordam beradi 
 
 // 2: Session code
 
 // 3: Views code
-app.set("views", "views");
-app.set("view engine", "ejs");
+app.set("views", "views"); // expressga template fayllar qayerdaekanligini ko'rsatadi
+app.set("view engine", "ejs"); // Node.js frameworkida ejs faylini asosiy engine qilib sozlab beradi
 
 // 4: Routing code
 app.post("/create-item", (req, res) => {
     console.log("user entered /create-item");
     const new_reja = req.body.reja;
+    // Traditional Post => Modern Post
     db.collection("plans").insertOne({reja: new_reja}, (err, data) => {
-        if(err) {
-            console.log(err);
-            res.end('something went wrong');
-        } else {
-            res.end('successfully added');
-        }
+        console.log(data.ops);
+        res.json(data.ops[0]);
     });
 });
 
@@ -47,14 +44,14 @@ app.get('/author', (req, res) => {
 app.get('/', function (req, res) {
     console.log('user entered /');
     db.collection("plans")
-    .find()
+    .find() // collectiondagi hamma narsani olib kelib beradi
     .toArray((err, data) => {
         if(err) {
             console.log(err);
             res.end("something went wrong");
         } else {
             console.log(data);
-            res.render("reja", { items: data});
+            res.render("reja", { items: data}); // render: ejs dan HTML shakllantiradi va userga jo'natamiz
         }
     });
 });
