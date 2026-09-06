@@ -1,13 +1,25 @@
-// MITASK-B
-function countDigits(str) {
-    let count = 0;
-    for (let char of str) {
-        if (!isNaN(char) && char !== ' ') count++;
-    }
-    return count;
+// MITAS -C
+
+function checkContent(str1, str2) {
+  if (str1.length !== str2.length) return false;
+
+  const sort = (str) => str.split("").sort().join("");
+
+  return sort(str1) === sort(str2);
 }
 
-console.log(countDigits("ad2a54y79wet0sfgb9"));
+console.log(checkContent("mitgroup", "gmtiprou"));
+
+// MITASK-B
+// function countDigits(str) {
+//     let count = 0;
+//     for (let char of str) {
+//         if (!isNaN(char) && char !== ' ') count++;
+//     }
+//     return count;
+// }
+
+// console.log(countDigits("ad2a54y79wet0sfgb9"));
 
 // MITASK-A
 // function countLetter(letter, word) {

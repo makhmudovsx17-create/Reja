@@ -36,3 +36,26 @@ document
     }); // agar muvafaqiyatli bo'lmasa ERROR holatda nima qilishni belgilab olamiz
 
 }); // formamiz submit bo'lganda function ishga tishishi kerak
+
+document.addEventListener("click", function (e) {
+    // delte oper
+    console.log(e.target);
+    if(e.target.classList.contains("delete-me")) {
+        if(confirm("Aniq ochirmoqchimisiz?")) {
+            axios
+            .post("/delete-item", { id: e.target.getAttribute("data-id") })
+            .then((response) => {
+                console.log(response.data);
+                e.target.parentElement.parentElement.remove();
+            })
+            .catch((err) => {
+                console.log("Iltimos qatadan harakat qiling!");    
+            });    
+        } 
+    }
+
+    // edit oper
+    if(e.target.classList.contains("edit-me")) {
+        alert("Siz edit tugmasini bostingiz");
+    }
+});
