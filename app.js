@@ -48,8 +48,29 @@ app.post("/delete-item", (req, res) => {
     );
 });
 
+app.post("/edit-item", (req, res) => {
+    const data = req.body;
+    db.collection("plans").findOneAndUpdate(
+        {_id: new mongodb.ObjectId(data.id)}, 
+        {$set: {reja: data.new_input}}, 
+        function(err, result) {
+            if (err) return res.status(500).json({ error: err });
+            res.json({ state: "success" });
+        }
+    );
+});
+
 app.get('/author', (req, res) => {
     res.render("author", { user: user });
+});
+
+app.post("/delete-all", (req, res) => {
+    if(req.body.delete_all) {
+        db.collection("plans").deleteMany({}, function(err, result) {
+    if (err) return res.status(500).json({ error: err });
+        res.json({ state: "hamma rejalar ochirildi" });
+    });
+    }
 });
 
 app.get('/', function (req, res) {
