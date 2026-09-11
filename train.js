@@ -1,57 +1,74 @@
+// MITASK - F
+
+function findDoublers(str) {
+  for (let i = 0; i < str.length; i++) {
+    for (let j = i + 1; j < str.length; j++) {
+      if (str[i] === str[j]) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+findDoublers("hello");
+findDoublers("world");
+
 // MITASK - D
-class Shop {
-    constructor(non, lagmon, cola) {
-        this.non = non;
-        this.lagmon = lagmon;
-        this.cola = cola;
-    }
 
-    qoldiq() {
-        const time = new Date();
-        const hour = time.getHours();
-        const minute = time.getMinutes();
-        console.log(`Hozir ${hour}:${minute}da ${this.non}ta non, ${this.lagmon}ta lagmon va ${this.cola}ta cola mavjud!`);
-    }
+// class Shop {
+//     constructor(non, lagmon, cola) {
+//         this.non = non;
+//         this.lagmon = lagmon;
+//         this.cola = cola;
+//     }
+
+//     qoldiq() {
+//         const time = new Date();
+//         const hour = time.getHours();
+//         const minute = time.getMinutes();
+//         console.log(`Hozir ${hour}:${minute}da ${this.non}ta non, ${this.lagmon}ta lagmon va ${this.cola}ta cola mavjud!`);
+//     }
     
-    sotish(product, count) {
-        const time = new Date();
-        const hour = time.getHours();
-        const minute = time.getMinutes();
+//     sotish(product, count) {
+//         const time = new Date();
+//         const hour = time.getHours();
+//         const minute = time.getMinutes();
 
-        if (product === "non") {
-            this.non -= count;
-        } else if (product === "lagmon") {
-            this.lagmon -= count;
-        } else if (product === "cola") {
-            this.cola -= count;
-        }
+//         if (product === "non") {
+//             this.non -= count;
+//         } else if (product === "lagmon") {
+//             this.lagmon -= count;
+//         } else if (product === "cola") {
+//             this.cola -= count;
+//         }
 
-        console.log(`Hozir ${hour}:${minute}da ${count}ta ${product} sotildi!`);
-    }
+//         console.log(`Hozir ${hour}:${minute}da ${count}ta ${product} sotildi!`);
+//     }
 
-    qabul(product, count) {
-        const time = new Date();
-        const hour = time.getHours();
-        const minute = time.getMinutes();
+//     qabul(product, count) {
+//         const time = new Date();
+//         const hour = time.getHours();
+//         const minute = time.getMinutes();
 
-        if (product === "non") {
-            this.non += count;
-        } else if (product === "lagmon") {
-            this.lagmon += count;
-        } else if (product === "cola") {
-            this.cola += count;
-        }
+//         if (product === "non") {
+//             this.non += count;
+//         } else if (product === "lagmon") {
+//             this.lagmon += count;
+//         } else if (product === "cola") {
+//             this.cola += count;
+//         }
 
-        console.log(`Hozir ${hour}:${minute}da ${count}ta ${product} qabul qilindi!`);
-    }
-};
+//         console.log(`Hozir ${hour}:${minute}da ${count}ta ${product} qabul qilindi!`);
+//     }
+// };
 
 
-const shop = new Shop(4, 5, 2);
+// const shop = new Shop(4, 5, 2);
 
-shop.sotish('non', 3);
-shop.qabul('cola', 4);
-shop.qoldiq();
+// shop.sotish('non', 3);
+// shop.qabul('cola', 4);
+// shop.qoldiq();
 
 // MITASK - C
 // function checkContent(str1, str2) {
