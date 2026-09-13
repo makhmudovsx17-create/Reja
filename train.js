@@ -1,18 +1,26 @@
-// MITASK - F
+// MITASK - E
 
-function findDoublers(str) {
-  for (let i = 0; i < str.length; i++) {
-    for (let j = i + 1; j < str.length; j++) {
-      if (str[i] === str[j]) {
-        return true;
-      }
-    }
-  }
-  return false;
+function getReverse(str) {
+  return str.split("").reverse().join("");
 }
 
-findDoublers("hello");
-findDoublers("world");
+console.log(getReverse("hello"));
+
+// MITASK - F
+
+// function findDoublers(str) {
+//   for (let i = 0; i < str.length; i++) {
+//     for (let j = i + 1; j < str.length; j++) {
+//       if (str[i] === str[j]) {
+//         return true;
+//       }
+//     }
+//   }
+//   return false;
+// }
+
+// findDoublers("hello");
+// findDoublers("world");
 
 // MITASK - D
 
