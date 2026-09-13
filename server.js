@@ -8,18 +8,18 @@ MongoClient.connect(connectionString, // MongoClientni connect degan objectini c
     {
         useNewUrlParsel: true,
         useUnifiedTopology: true,
-},
-(err, client) => { // arrow function va parametrlar: err, client
-    if(err) console.log("ERROR on connection MongoDB"); // hatolik yuzaga kelsa shu message yuboriladi
-    else {
-        console.log("MongoDB connection succeed"); // hatolik bo'lmasa shu message yuboriladi
-        module.exports = client;
+    },
+    (err, client) => { // arrow function va parametrlar: err, client
+        if (err) console.log("ERROR on connection MongoDB"); // hatolik yuzaga kelsa shu message yuboriladi
+        else {
+            console.log("MongoDB connection succeed"); // hatolik bo'lmasa shu message yuboriladi
+            module.exports = client;
 
-        const app = require("./app"); // app nomli faylni chaqirish serverimiz shu appda qurilgan
-        const server = http.createServer(app); // programmani kompyuterga biriktirish
-        let PORT = 3000; // kompyuterga biriktirilgan programmani portga bog'lash
-        server.listen(PORT, function () {
-            console.log(`Sefver is running successfully on port: ${PORT}, http://localhost:${PORT}`);
-        });
-    }
-}); // callback function - bu nimadur bajarilsa o'shandan keyin yurgiziladigan functionning nomi CALLBACK FUNCTION
+            const app = require("./app"); // app nomli faylni chaqirish serverimiz shu appda qurilgan
+            const server = http.createServer(app); // programmani kompyuterga biriktirish
+            let PORT = 6009; // kompyuterga biriktirilgan programmani portga bog'lash
+            server.listen(PORT, function () {
+                console.log(`Sefver is running successfully on port: ${PORT}, http://localhost:${PORT}`);
+            });
+        }
+    }); // callback function - bu nimadur bajarilsa o'shandan keyin yurgiziladigan functionning nomi CALLBACK FUNCTION
