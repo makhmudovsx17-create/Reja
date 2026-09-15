@@ -1,10 +1,27 @@
-// MITASK - E
+// MITASK - G
+function getHighestIndex(arr) {
+    let highest = arr[0];
+    let highestIndex = 0;
 
-function getReverse(str) {
-  return str.split("").reverse().join("");
+    arr.forEach((value, index) => {
+        if (value > highest) {
+          highest = value;
+          highestIndex = index;
+        }
+    });
+
+    return highestIndex;
 }
 
-console.log(getReverse("hello"));
+console.log(getHighestIndex([5, 21, 12, 21, 8]));
+
+// MITASK - E
+
+// function getReverse(str) {
+//   return str.split("").reverse().join("");
+// }
+
+// console.log(getReverse("hello"));
 
 // MITASK - F
 
