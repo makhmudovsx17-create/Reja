@@ -1,17 +1,25 @@
-// MITASK - G
-function getHighestIndex(arr) {
-    let highest = arr[0];
-    let highestIndex = 0;
+// MITASK - K
 
-    arr.forEach((value, index) => {
-        if (value > highest) {
-          highest = value;
-          highestIndex = index;
-        }
-    });
-
-    return highestIndex;
+function getPositive(arr) {
+  return arr.filter(num => num > 0).join('');
 }
+
+console.log(getPositive([1, -4, 2])); // "12"
+
+// MITASK - G
+// function getHighestIndex(arr) {
+//     let highest = arr[0];
+//     let highestIndex = 0;
+
+//     arr.forEach((value, index) => {
+//         if (value > highest) {
+//           highest = value;
+//           highestIndex = index;
+//         }
+//     });
+
+//     return highestIndex;
+// }
 
 console.log(getHighestIndex([5, 21, 12, 21, 8]));
 
